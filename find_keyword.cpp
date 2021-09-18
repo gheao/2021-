@@ -192,7 +192,13 @@ int main()
 {
 	int Find_type;
 	string File_p;
+	cout << "请输入文件路径：" << endl;
 	cin >> File_p;
+	cout << "请输入查询等级：   " << endl;
+	cout << "1- Total查询" << endl;
+	cout << "2- switch&case查询" << endl;
+	cout << "3- if_else查询" << endl;
+	cout << "4- if_elseif_if查询" << endl;
 	cin >> Find_type;
 	ifstream finput(File_p);
 	while (finput >> Text)
@@ -206,10 +212,14 @@ int main()
 		tmp = "\0";
 		else_flag = 0;
 	}
-	cout << "Total_num = " << Total_num << endl;
+	cout << "Total num = " << Total_num ;
+	if (Find_type != 1)
+	{
+		cout << endl;
+	}
 	if (Find_type >= 2)
 	{
-		cout << "Switch_num = " << Switch_num << endl;
+		cout << "Switch num = " << Switch_num << endl;
 		if (!Case_num.empty())
 		{
 			Case_num.push_back(Single_case_num);
@@ -224,15 +234,22 @@ int main()
 				cout << Case_num[i] << " ";
 
 			}
-		cout << endl;
+			if (Find_type != 2)
+			{
+				cout << endl;
+			}
 	}
 	if (Find_type >= 3)
 	{
-		cout << "if_else_num = " << If_else_num << endl;
+		cout << "if_else num = " << If_else_num ;
+		if (Find_type != 3)
+		{
+			cout << endl;
+		}
 	}
 	if (Find_type >= 4)
 	{
-		cout << "if_else_if_num = " << If_else_if_else_num << endl;
+		cout << "if_else_if num = " << If_else_if_else_num;
 	}
 	finput.close();
 	return 0;
