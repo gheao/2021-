@@ -27,6 +27,8 @@ int Switch_num = 0;
 int Single_case_num = 0;
 int If_else_num = 0;
 int If_else_if_else_num = 0;
+int explain_flag_1 = 0;
+int explain_flag_2 = 0;
 
 void Search_and_Outfile(string s)
 {	
@@ -104,12 +106,32 @@ void String_trim()
 	int level = if_else_level;
 	int l_flag = else_flag;
 	for (int i = 0; i < n; i++) {
-		if (Text[i] <= 'z' && Text[i] >= 'A')
+		if (Text[i] <= 'z' && Text[i] >= 'A' && explain_flag_1 == 0 && explain_flag_2 == 0)
 		{
 			change = change + Text[i];
 		}
 		else
-		{
+		{	
+			if (i >= 1 && Text[i] == '*' && Text[i - 1] == '/' && explain_flag_1 == 0 && explain_flag_2 == 0)
+			{
+				explain_flag_1 = 1;
+			}
+			else if (Text[i] == '"' && explain_flag_1 == 0 && explain_flag_2 == 0)
+			{
+				explain_flag_2 = 1;
+			}
+			else if (i >= 1 && Text[i] == '/' && Text[i - 1] == '*' && explain_flag_1 == 1 && explain_flag_2 == 0)
+			{
+				explain_flag_1 = 0;
+			}
+			else if (Text[i] == '"' && explain_flag_1 == 0 && explain_flag_2 == 1)
+			{
+				explain_flag_2 = 0;
+			}
+			if (explain_flag_1 != 0 || explain_flag_2 != 0)
+			{
+				continue;
+			}
 			if (Text[i] == '{' || Text[i] == '(')
 			{
 				if (Text[i] == '{')
@@ -145,7 +167,6 @@ void String_trim()
 	}
 	if (Text == "else")
 	{
-		//cout << l_flag << " " << tmp << "---------------e" << endl;
 		if (tmp != "else")
 		{
 			tmp = "else";
@@ -163,7 +184,6 @@ void String_trim()
 	}
 	else if (Text == "if")
 	{
-		//cout << l_flag << " " << tmp << "---------------i" << endl;
 		if (l_flag == 1 && tmp == "else")
 		{
 			
