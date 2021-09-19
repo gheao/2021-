@@ -1,0 +1,43 @@
+include<iosteam>
+using namespace std;
+int main()
+{
+	int i;
+	int j;
+	double k;
+	if( )
+	{
+		if( )
+		{
+			if( )
+			{
+				
+			}
+			if( )
+			{
+				
+			}
+			else if( )
+			{
+				
+			}
+			if( )
+			{
+				
+			}
+			else
+			{
+			
+			}  
+		}
+		else
+		{
+		
+		} 
+	}
+	else
+	{
+		
+	}
+	return 0;
+}
